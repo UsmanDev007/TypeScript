@@ -5,9 +5,7 @@ import Loader  from "../components/Loader";
 const Loadable = (Component: LazyExoticComponent<FC>) => (props: any) =>
   (
     <Suspense
-      fallback={
-          <Loader />
-      }
+      fallback={<Loader />}
     >
       <Component {...props} />
     </Suspense>
