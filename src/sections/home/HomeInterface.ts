@@ -1,5 +1,3 @@
-// mock data ki interface define krni h yani k types define krni h
-
 export interface Product {
     id: number;
     title: string;
@@ -8,6 +6,7 @@ export interface Product {
     discountPercentage: number;
     rating: number;
     stock: number;
+    products:Product[];
     brand: string;
     category: string;
     thumbnail: string;
