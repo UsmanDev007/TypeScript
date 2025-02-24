@@ -4,11 +4,12 @@ interface ButtonProps{
     label:string
     bgcolor:string
     color:string
+    onclick:()=>void
 }
-const Button:React.FC<ButtonProps> = ({label,bgcolor,color}) => {
+const Button:React.FC<ButtonProps> = ({label,bgcolor,color,onclick}) => {
   return (
      <>
-      <ButtonBase sx={{
+      <ButtonBase onClick={onclick} sx={{
         backgroundColor: bgcolor,
         color: color,
         padding: "12px 24px",

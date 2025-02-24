@@ -19,6 +19,7 @@ export const useGetProduct = () => {
   useEffect(() => {
     if (data) {
       SetGetData(data);
+      console.log(data)
     }
   }, [data]);
   return {
