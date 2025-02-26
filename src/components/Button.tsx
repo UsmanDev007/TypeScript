@@ -6,7 +6,7 @@ interface ButtonProps{
     color:string
     onclick:()=>void
 }
-const Button:React.FC<ButtonProps> = ({label,bgcolor,color,onclick}) => {
+const CustomButton:React.FC<ButtonProps> = ({label,bgcolor,color,onclick}) => {
   return (
      <>
       <ButtonBase onClick={onclick} sx={{
@@ -14,12 +14,13 @@ const Button:React.FC<ButtonProps> = ({label,bgcolor,color,onclick}) => {
         color: color,
         padding: "12px 24px",
         borderRadius: "2px",
-        fontSize: "16px",
+        width: "145px",
+        height: "45px",
+        fontSize: "13.5px",
         fontWeight: "bold",
         transition: "all 0.3s ease-in-out",
         boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
         "&:hover": {
-          backgroundColor: "#0056b3",
           transform: "scale(1.05)",
           boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.2)",
         },
@@ -30,4 +31,4 @@ const Button:React.FC<ButtonProps> = ({label,bgcolor,color,onclick}) => {
   )
 }
 
-export default Button
+export default CustomButton

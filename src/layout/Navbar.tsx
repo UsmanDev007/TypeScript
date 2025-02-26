@@ -3,11 +3,12 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Grid, Button, Badge } from "@mui/material";
+import { Grid, Badge,Button } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
+import CustomButton from "../components/Button";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import { Link } from "react-router-dom";
@@ -96,17 +97,12 @@ const Navbar: React.FC<Props> = (props) => {
           </Badge>
         </IconButton>
       </Box>
-      <Button
-        sx={{
-          width: "100%",
-          height: "50px",
-          borderRadius: "8px",
-          backgroundColor: "#63a2f4",
-          color: "#E9EFF2",
-        }}
-      >
-        Sign Up
-      </Button>
+      <CustomButton
+          label="Sign Up"
+          bgcolor= "#63a2f4"
+          color= "#E9EFF2"
+          onclick={()=>{}}
+      />
     </Box>
   );
 
@@ -223,29 +219,19 @@ const Navbar: React.FC<Props> = (props) => {
                   </IconButton>
                 </Box>
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>
-                  <Button
-                    sx={{
-                      width: "145px",
-                      height: "45px",
-                      fontSize: "13.5px",
-                      backgroundColor: "#63a2f4",
-                      color: "#E9EFF2",
-                    }}
-                  >
-                    Sign Up
-                  </Button>
+                  <CustomButton
+                    label="Sign Up"
+                    bgcolor="#63a2f4"
+                    color="#E9EFF2"
+                    onclick={()=>{}}
+                   />
                 </Box>
-                <Button
-                  sx={{
-                    fontSize: "18px",
-                    fontWeight: "500",
-                    color: "#F2F2F2",
-                    backgroundColor: "#F25E86",
-                    textDecoration: "none",
-                  }}
-                >
-                  Login
-                </Button>
+                <CustomButton
+                  label="Login"
+                  bgcolor="#F25E86"
+                  color="#E9EFF2"
+                  onclick={()=>{}}
+                />
               </Box>
             </Grid>
           </Grid>

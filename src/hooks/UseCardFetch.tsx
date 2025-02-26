@@ -13,17 +13,18 @@ export const useGetProduct = () => {
   const { isPending, data, isError, error } = useQuery({
     queryKey: ["carts"],
     queryFn: fetchProducts,
+    staleTime:1000*60*5,//to make the data fresh for 5 minutes
   });
   const [GetData, SetGetData] = useState<Product[]>([]);
 
   useEffect(() => {
     if (data) {
       SetGetData(data);
-      console.log(data)
     }
   }, [data]);
   return {
     GetData,
+    SetGetData,
     isPending,
     data,
     isError,
