@@ -3,10 +3,11 @@ import React from 'react'
 interface ButtonProps{
     label:string
     bgcolor:string
+    width:string
     color:string
     onclick:()=>void
 }
-const CustomButton:React.FC<ButtonProps> = ({label,bgcolor,color,onclick}) => {
+const CustomButton:React.FC<ButtonProps> = ({label,bgcolor,color,onclick,width}) => {
   return (
      <>
       <ButtonBase onClick={onclick} sx={{
@@ -14,7 +15,7 @@ const CustomButton:React.FC<ButtonProps> = ({label,bgcolor,color,onclick}) => {
         color: color,
         padding: "12px 24px",
         borderRadius: "2px",
-        width: "145px",
+        width: width,
         height: "45px",
         fontSize: "13.5px",
         fontWeight: "bold",

@@ -99,6 +99,7 @@ const Navbar: React.FC<Props> = (props) => {
       </Box>
       <CustomButton
           label="Sign Up"
+          width="145px"
           bgcolor= "#63a2f4"
           color= "#E9EFF2"
           onclick={()=>{}}
@@ -221,6 +222,7 @@ const Navbar: React.FC<Props> = (props) => {
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>
                   <CustomButton
                     label="Sign Up"
+                    width="145px"
                     bgcolor="#63a2f4"
                     color="#E9EFF2"
                     onclick={()=>{}}
@@ -228,6 +230,7 @@ const Navbar: React.FC<Props> = (props) => {
                 </Box>
                 <CustomButton
                   label="Login"
+                  width="145px"
                   bgcolor="#F25E86"
                   color="#E9EFF2"
                   onclick={()=>{}}
