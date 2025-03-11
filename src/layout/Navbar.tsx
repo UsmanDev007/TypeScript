@@ -14,6 +14,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logo from "../assets/Logo.png";
+import BasicModal from "../components/Modal";
 
 interface Props {
   window?: () => Window;
@@ -36,6 +37,7 @@ const drawerWidth = 250;
 const Navbar: React.FC<Props> = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -70,6 +72,7 @@ const Navbar: React.FC<Props> = (props) => {
       </List>
       <Box mb={1}>
         <IconButton
+          onClick={()=>setOpen(true)}
           sx={{
             width: "50px", 
             height: "50px",
@@ -96,6 +99,7 @@ const Navbar: React.FC<Props> = (props) => {
             <ShoppingCartIcon sx={{ color: "#333", fontSize: "24px" }} />
           </Badge>
         </IconButton>
+        <BasicModal open={open} setOpen={setOpen} />
       </Box>
       <CustomButton
           label="Sign Up"
@@ -193,6 +197,7 @@ const Navbar: React.FC<Props> = (props) => {
               >
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>
                   <IconButton
+                  onClick={()=>setOpen(true)}
                     sx={{
                       width: "50px", 
                       height: "50px",
@@ -218,6 +223,7 @@ const Navbar: React.FC<Props> = (props) => {
                       />
                     </Badge>
                   </IconButton>
+                  <BasicModal open={open} setOpen={setOpen} />
                 </Box>
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>
                   <CustomButton
