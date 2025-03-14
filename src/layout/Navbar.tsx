@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logo from "../assets/Logo.png";
 import BasicModal from "../components/Modal";
-
+import { useSelector } from "react-redux";
 interface Props {
   window?: () => Window;
 }
@@ -42,6 +42,8 @@ const Navbar: React.FC<Props> = (props) => {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const quantity = useSelector((state:any) => state.cart.quantity);
+  
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -88,7 +90,7 @@ const Navbar: React.FC<Props> = (props) => {
           }}
         >
           <Badge
-            badgeContent={4}
+            badgeContent={quantity}
             sx={{
               "& .MuiBadge-badge": {
                 backgroundColor: "#FF9900", 
@@ -115,7 +117,7 @@ const Navbar: React.FC<Props> = (props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex"}}>
+    <Box sx={{ display: "flex",position:'sticky',top:0,backgroundColor:'white',zIndex:1000}}>
       <CssBaseline />
       <div style={{ width: "100%" }}>
         <Toolbar disableGutters>
@@ -210,7 +212,7 @@ const Navbar: React.FC<Props> = (props) => {
                     }}
                   >
                     <Badge
-                      badgeContent={4}
+                      badgeContent={quantity}
                       sx={{
                         "& .MuiBadge-badge": {
                           backgroundColor: "#FF9900", 

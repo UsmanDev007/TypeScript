@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import CardSystem from "./CardSystem";
 const store= configureStore({
     reducer:{
-        name:CardSystem
+        cart:CardSystem
     }
 })
 export default store

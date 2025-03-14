@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-
+import { useSelector } from "react-redux";
 // Define the props type
 interface ModalProps {
   open: boolean;
@@ -23,22 +23,26 @@ const style = {
 };
 
 const BasicModal: React.FC<ModalProps> = ({ open, setOpen }) => {
-  const handleClose = () => setOpen(false);
-
+  const handleClose = () =>{
+    setOpen(false);
+  } 
+  const { cart } = useSelector((item: any) => item.cart);
   return (
     <Modal
       open={open}
-      onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
+        <Box>
+          {cart.length > 0 ? (
+            cart.map((item: any, index: number) => {
+              return <Typography key={index}>{item.title}</Typography>;
+            })
+          ) : (
+            <Typography>Your cart is empty</Typography>
+          )}
+        </Box>
         <Button
           variant="contained"
           color="error"

@@ -9,6 +9,7 @@ export interface Product {
     products:Product[];
     brand: string;
     category: string;
+    quantity?: number;
     thumbnail: string;
     images: string[];
   }

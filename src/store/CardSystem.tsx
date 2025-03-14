@@ -7,7 +7,7 @@ interface CartState {
 }
 
 const initialState: CartState = {
-    cart: [],
+    cart: [], //for useselector
     quantity: 0,
 };
 
@@ -17,6 +17,7 @@ const CardSystem = createSlice({
     reducers: {
         AddCart: (state, action: PayloadAction<Product>) => {
             state.cart.push(action.payload);
+            state.quantity+=1;
         }
     }
 });
