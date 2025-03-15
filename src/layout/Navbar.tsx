@@ -42,7 +42,8 @@ const Navbar: React.FC<Props> = (props) => {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const quantity = useSelector((state:any) => state.cart.quantity);
+  const cart = useSelector((state:any) => state.cart.cart);
+  const totalQuantity = cart.reduce((sum: number, item: any) => sum + item.quantity, 0);
   
 
   const drawer = (
@@ -90,7 +91,7 @@ const Navbar: React.FC<Props> = (props) => {
           }}
         >
           <Badge
-            badgeContent={quantity}
+            badgeContent={totalQuantity}
             sx={{
               "& .MuiBadge-badge": {
                 backgroundColor: "#FF9900", 
@@ -212,7 +213,7 @@ const Navbar: React.FC<Props> = (props) => {
                     }}
                   >
                     <Badge
-                      badgeContent={quantity}
+                      badgeContent={totalQuantity}
                       sx={{
                         "& .MuiBadge-badge": {
                           backgroundColor: "#FF9900", 

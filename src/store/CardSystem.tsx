@@ -1,26 +1,38 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../sections/home/HomeInterface';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Product } from "../sections/home/HomeInterface";
+
+interface CartItem extends Product {
+  quantity: number;
+}
 
 interface CartState {
-    cart: Product[];
-    quantity: number;
+  cart: CartItem[];
 }
 
 const initialState: CartState = {
-    cart: [], //for useselector
-    quantity: 0,
+  cart: [],
 };
 
-const CardSystem = createSlice({
-    name: 'cart',
-    initialState,
-    reducers: {
-        AddCart: (state, action: PayloadAction<Product>) => {
-            state.cart.push(action.payload);
-            state.quantity+=1;
-        }
-    }
+const CartSystem = createSlice({
+  name: "cart",
+  initialState,
+  reducers: {
+    AddCart: (state, action: PayloadAction<Product>) => {
+      const existingProduct = state.cart.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        state.cart.push({ ...action.payload, quantity: 1 });
+      }
+    },
+    clearCart: (state) => {
+        state.cart = []; 
+      },
+  },
 });
 
-export const { AddCart } = CardSystem.actions;
-export default CardSystem.reducer;
+export const { AddCart,clearCart } = CartSystem.actions;
+export default CartSystem.reducer;

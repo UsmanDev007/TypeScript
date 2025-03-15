@@ -11,7 +11,7 @@ import CustomButton from "../../components/Button";
 import SearchCard from "../../components/SearchCard";
 import { useSearchCard } from "../../hooks/UserSearchCard";
 import { useDispatch } from "react-redux";
-import { AddCart } from "../../store/CardSystem";
+import { AddCart} from "../../store/CardSystem";
 // import Loader from "../../components/Loader";
 const HomeUI: React.FC = () => {
   const {
