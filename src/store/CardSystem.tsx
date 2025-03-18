@@ -4,7 +4,6 @@ import { Product } from "../sections/home/HomeInterface";
 interface CartItem extends Product {
   quantity: number;
 }
-
 interface CartState {
   cart: CartItem[];
 }
