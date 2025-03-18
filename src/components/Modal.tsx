@@ -55,7 +55,6 @@ const BasicModal: React.FC<ModalProps> = ({ open, setOpen }) => {
     const newQuantity = Math.max(1, Number(value));
     setQuantities((prev) => ({ ...prev, [id]: newQuantity }));
   };
-  console.log(cart);
   const totalAmount = cart.reduce((sum: number, product: any) => {
     return sum + (quantities[product.id] || 1) * product.price;
   }, 0);

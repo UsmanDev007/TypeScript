@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Grid, Badge,Button } from "@mui/material";
+import { Grid, Badge, Button } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
@@ -11,11 +11,12 @@ import List from "@mui/material/List";
 import CustomButton from "../components/Button";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logo from "../assets/Logo.png";
 import BasicModal from "../components/Modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutUser } from "../features/auth/signin/AuthSlice";
 interface Props {
   window?: () => Window;
 }
@@ -42,9 +43,17 @@ const Navbar: React.FC<Props> = (props) => {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const cart = useSelector((state:any) => state.cart.cart);
-  const totalQuantity = cart.reduce((sum: number, item: any) => sum + item.quantity, 0);
-  
+  const cart = useSelector((state: any) => state.cart.cart);
+  const totalQuantity = cart.reduce(
+    (sum: number, item: any) => sum + item.quantity,
+    0
+  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logOutUser());
+    navigate("/login");
+  };
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -75,13 +84,13 @@ const Navbar: React.FC<Props> = (props) => {
       </List>
       <Box mb={1}>
         <IconButton
-          onClick={()=>setOpen(true)}
+          onClick={() => setOpen(true)}
           sx={{
-            width: "50px", 
+            width: "50px",
             height: "50px",
-            display:'flex',
-            justifyContent:'flex-start',
-            marginLeft:"15px",
+            display: "flex",
+            justifyContent: "flex-start",
+            marginLeft: "15px",
             borderRadius: "8px",
             backgroundColor: "#fff",
             boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
@@ -94,7 +103,7 @@ const Navbar: React.FC<Props> = (props) => {
             badgeContent={totalQuantity}
             sx={{
               "& .MuiBadge-badge": {
-                backgroundColor: "#FF9900", 
+                backgroundColor: "#FF9900",
                 color: "#fff",
               },
             }}
@@ -105,11 +114,11 @@ const Navbar: React.FC<Props> = (props) => {
         <BasicModal open={open} setOpen={setOpen} />
       </Box>
       <CustomButton
-          label="Sign Up"
-          width="145px"
-          bgcolor= "#63a2f4"
-          color= "#E9EFF2"
-          onclick={()=>{}}
+        label="Log Out"
+        width="145px"
+        bgcolor="#63a2f4"
+        color="#E9EFF2"
+        onclick={handleLogout}
       />
     </Box>
   );
@@ -118,7 +127,15 @@ const Navbar: React.FC<Props> = (props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex",position:'sticky',top:0,backgroundColor:'white',zIndex:1000}}>
+    <Box
+      sx={{
+        display: "flex",
+        position: "sticky",
+        top: 0,
+        backgroundColor: "white",
+        zIndex: 1000,
+      }}
+    >
       <CssBaseline />
       <div style={{ width: "100%" }}>
         <Toolbar disableGutters>
@@ -134,7 +151,7 @@ const Navbar: React.FC<Props> = (props) => {
                 edge="start"
                 onClick={handleDrawerToggle}
               >
-                <MenuIcon style={{ color: "#FF3B83",fontSize: "2.75rem" }} />
+                <MenuIcon style={{ color: "#FF3B83", fontSize: "2.75rem" }} />
               </IconButton>
             </Grid>
             <Grid
@@ -200,9 +217,9 @@ const Navbar: React.FC<Props> = (props) => {
               >
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>
                   <IconButton
-                  onClick={()=>setOpen(true)}
+                    onClick={() => setOpen(true)}
                     sx={{
-                      width: "50px", 
+                      width: "50px",
                       height: "50px",
                       borderRadius: "8px",
                       backgroundColor: "#fff",
@@ -216,7 +233,7 @@ const Navbar: React.FC<Props> = (props) => {
                       badgeContent={totalQuantity}
                       sx={{
                         "& .MuiBadge-badge": {
-                          backgroundColor: "#FF9900", 
+                          backgroundColor: "#FF9900",
                           color: "#fff",
                         },
                       }}
@@ -230,20 +247,22 @@ const Navbar: React.FC<Props> = (props) => {
                 </Box>
                 <Box sx={{ display: { xs: "none", lg: "block" } }}>
                   <CustomButton
-                    label="Sign Up"
+                    label="Log Out"
                     width="145px"
                     bgcolor="#63a2f4"
                     color="#E9EFF2"
-                    onclick={()=>{}}
-                   />
+                    onclick={handleLogout}
+                  />
                 </Box>
-                <CustomButton
-                  label="Login"
-                  width="145px"
-                  bgcolor="#F25E86"
-                  color="#E9EFF2"
-                  onclick={()=>{}}
-                />
+                <Link to="/login">
+                  <CustomButton
+                    label="Login"
+                    width="145px"
+                    bgcolor="#F25E86"
+                    color="#E9EFF2"
+                    onclick={() => {}}
+                  />
+                </Link>
               </Box>
             </Grid>
           </Grid>

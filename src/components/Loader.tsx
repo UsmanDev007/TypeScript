@@ -13,6 +13,18 @@ export default function Animations() {
               <Skeleton variant="text" height={20} width="60%" animation="wave" />
               <Skeleton variant="text" height={20} width="40%" animation="wave" />
             </CardContent>
+            <Skeleton variant="rectangular" height={200} animation="wave" />
+            <CardContent>
+              <Skeleton variant="text" height={30} width="80%" animation="wave" />
+              <Skeleton variant="text" height={20} width="60%" animation="wave" />
+              <Skeleton variant="text" height={20} width="40%" animation="wave" />
+            </CardContent>
+            <Skeleton variant="rectangular" height={200} animation="wave" />
+            <CardContent>
+              <Skeleton variant="text" height={30} width="80%" animation="wave" />
+              <Skeleton variant="text" height={20} width="60%" animation="wave" />
+              <Skeleton variant="text" height={20} width="40%" animation="wave" />
+            </CardContent>
           </Card>
         </Grid>
       ))}

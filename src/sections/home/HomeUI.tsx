@@ -11,8 +11,8 @@ import CustomButton from "../../components/Button";
 import SearchCard from "../../components/SearchCard";
 import { useSearchCard } from "../../hooks/UserSearchCard";
 import { useDispatch } from "react-redux";
-import { AddCart} from "../../store/CardSystem";
-// import Loader from "../../components/Loader";
+import { AddCart } from "../../store/CardSystem";
+import Loader from "../../components/Loader";
 const HomeUI: React.FC = () => {
   const {
     combinedData,
@@ -76,16 +76,7 @@ const HomeUI: React.FC = () => {
         />
       </Box>
       {combinedData.length == 0 ? (
-        <Typography
-          sx={{
-            textAlign: "center",
-            fontSize: "30px",
-            color: "#E50056",
-            marginTop: "10px",
-          }}
-        >
-          Loading..
-        </Typography>
+        <Loader />
       ) : (
         <Grid container spacing={3} marginTop={3}>
           {combinedData.map((cart) =>
