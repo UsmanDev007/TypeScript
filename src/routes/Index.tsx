@@ -1,6 +1,5 @@
 import { FC, lazy, LazyExoticComponent, Suspense } from "react";
-import { Navigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Navigate} from "react-router-dom";
 import Loader from "../components/Loader";
 import { PrivateRoute } from "./PrivateRoute";
 
