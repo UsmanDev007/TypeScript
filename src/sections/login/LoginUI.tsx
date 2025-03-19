@@ -18,6 +18,7 @@ interface FormData {
 const LoginUI: React.FC = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [errormsg, seterrormsg] = useState(false);
+  const [loading,setloading]=useState(false);
   const {
     register,
     handleSubmit,
@@ -25,6 +26,7 @@ const LoginUI: React.FC = () => {
   } = useForm<FormData>();
   const { mutate } = useAuth();
   const handleCredentials = (data: FormData) => {
+    setloading(true);
     mutate(data, {
       onError: (error: any) => {
         seterrormsg(error.message || "Something went wrong");
@@ -106,7 +108,7 @@ const LoginUI: React.FC = () => {
                 fontSize: "1.1rem",
               }}
             >
-              Sign In
+              {loading?"Signing In...":"Sign In"}
             </Button>
           </form>
 

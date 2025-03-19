@@ -2,6 +2,7 @@ import { FC, lazy, LazyExoticComponent, Suspense } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Loader from "../components/Loader";
+import { PrivateRoute } from "./PrivateRoute";
 
 const Loadable = (Component: LazyExoticComponent<FC>) => (props: any) =>
   (
@@ -16,12 +17,7 @@ const Login = Loadable(lazy(() => import("../pages/Login")));
 const About = Loadable(lazy(() => import("../pages/About")));
 const Contact = Loadable(lazy(() => import("../pages/Contact")));
 
-const PrivateRoute = () => {
-  const token =
-    useSelector((state: any) => state.auth.token) ||
-    localStorage.getItem("token");
-  return token ? <Outlet /> : <Navigate to="/login" />;
-};
+
 
 export const routes: any = [
   { path: "/", element: <Navigate to="home" /> },
