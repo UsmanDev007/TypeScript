@@ -1,4 +1,4 @@
 export interface AuthInterface{
-    user:string |null;
+    user:{firstName:string} |null;
     token:any;
 }

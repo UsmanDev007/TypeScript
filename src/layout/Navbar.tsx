@@ -48,6 +48,7 @@ const Navbar: React.FC<Props> = (props) => {
     (sum: number, item: any) => sum + item.quantity,
     0
   );
+  const Logname=useSelector((state:any)=>state.auth.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -256,7 +257,7 @@ const Navbar: React.FC<Props> = (props) => {
                 </Box>
                 <Link to="/login">
                   <CustomButton
-                    label="Login"
+                    label={`${Logname?.firstName||"LogIn"}`}
                     width="145px"
                     bgcolor="#F25E86"
                     color="#E9EFF2"

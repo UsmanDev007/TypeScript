@@ -12,10 +12,9 @@ export const AuthSlice = createSlice({
   reducers: {
     loginUser: (
       state,
-      action: PayloadAction<{ user: string; token: string }>
+      action: PayloadAction<{ firstName: string; token: string }>
     ) => {
-      console.log("actions", action.payload);
-      state.user = action.payload.user;
+      state.user = {firstName:action.payload.firstName}
       state.token = action.payload.token;
       localStorage.setItem("token", action.payload.token);
     },
